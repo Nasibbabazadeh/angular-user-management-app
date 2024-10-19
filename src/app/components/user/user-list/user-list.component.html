@@ -1,0 +1,60 @@
+<div class="flex flex-col items-end max-w-[1440px] mx-auto gap-10">
+    <button class="px-4 py-2 rounded-lg bg-green-800 text-white relative top-5" (click)="openUserModal()">Add new
+        user</button>
+    <table class=" w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400 rounded-sm">
+        <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+            <tr class="text-lg font-medium text-red-50">
+                <th scope="col" class="px-6 py-3 ">
+                    Name
+                </th>
+                <th scope="col" class="px-6 py-3">
+                    Surname
+                </th>
+                <th scope="col" class="px-6 py-3">
+                    Email Adress
+                </th>
+                <th scope="col" class="px-6 py-3">
+                    Profession
+                </th>
+                <th scope="col" class="px-6 py-3 text-center">
+                    Actions
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            @for (user of users | paginate : {itemsPerPage: 5, currentPage: currentPage}; track user.id) {
+            <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:cursor-pointer hover:bg-black ease-linear transition-all"
+                routerLink="{{user.id}}">
+                <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                    {{user.name}}
+                </th>
+                <td class="px-6 py-4">
+                    {{user.surname}}
+                </td>
+                <td class="px-6 py-4">
+                    {{user.email}}
+                </td>
+                <td class="px-6 py-4">
+                    {{user.profession}}
+                </td>
+                <td class="px-6 py-4 space-x-2 flex justify-center gap-2">
+                    <button
+                        class="px-4 py-2 text-white bg-red-500 rounded-lg hover:bg-red-600 focus:outline-none focus:ring-2 focus:ring-red-300 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-800"
+                        (click)="deleteUserById(user.id);$event.stopPropagation()">
+                        Delete User
+                    </button>
+
+                    <button (click)="openEditModal(user);$event.stopPropagation()"
+                        class="px-4 py-2 text-white bg-blue-500 rounded-lg hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+                        Edit User
+                    </button>
+                </td>
+            </tr>
+            }
+        </tbody>
+    </table>
+    <pagination-controls (pageChange)="handlePageChange($event)">
+    </pagination-controls>
+    <app-user-modal *ngIf="isModalOpen" [mode]="modalMode" [userData]="selectedUser"
+        (formSubmit)="handleFormSubmit($event)" (closeModal)="closeModal()"></app-user-modal>
+</div>
