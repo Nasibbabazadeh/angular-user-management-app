@@ -3,11 +3,12 @@
     "version": "0.0.0",
     "scripts": {
         "ng": "ng",
-        "start": "ng serve",
+        "start": "node server.js",
         "build": "ng build",
         "watch": "ng build --watch --configuration development",
         "test": "ng test",
-        "serve:ssr:angular-tailwind-user-app": "node dist/angular-tailwind-user-app/server/server.mjs"
+        "serve:ssr:angular-tailwind-user-app": "node dist/angular-tailwind-user-app/server/server.mjs",
+        "heroku-postbuild": "ng build"
     },
     "private": true,
     "dependencies": {
@@ -30,8 +31,8 @@
     },
     "devDependencies": {
         "@angular-devkit/build-angular": "^17.3.10",
-        "@angular/cli": "^17.3.10",
-        "@angular/compiler-cli": "^17.3.0",
+        "@angular/cli": "^18.2.9",
+        "@angular/compiler-cli": "^17.3.12",
         "@types/express": "^4.17.17",
         "@types/jasmine": "~5.1.0",
         "@types/node": "^18.18.0",
@@ -47,6 +48,10 @@
         "typescript": "~5.4.2"
     },
     "engines": {
-        "node": "20.x"
-    }
+        "node": "20.x",
+        "npm": "10.9.0"
+    },
+    "@angular/cli": "^18.2.9",
+    "@angular/compiler-cli": "^17.3.12",
+    "typescript": "~5.4.2"
 }
