@@ -60,4 +60,8 @@ To run this project locally, ensure you have the following tools installed:
     ```
 6. Watching for Changes
 
-To build and watch for changes continuously in development mode:
+    To build and watch for changes continuously in development mode:
+
+    ```
+    npm run watch
+    ```
