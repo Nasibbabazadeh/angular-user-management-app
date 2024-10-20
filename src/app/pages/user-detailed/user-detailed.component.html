@@ -1,36 +1,53 @@
-<div class="max-w-md mx-auto bg-white shadow-lg rounded-lg overflow-hidden my-4">
-    <div class="px-6 py-4">
-        <h2 class="text-xl font-bold mb-2 text-gray-800">User Information</h2>
-        <ul class="list-none">
-            <li class="mb-3">
-                <span class="font-semibold text-gray-700">Name: </span>
-                <span class="text-gray-600">Dustin O'Kon</span>
-            </li>
-            <li class="mb-3">
-                <span class="font-semibold text-gray-700">Email: </span>
-                <span class="text-gray-600">Freddy.Wolf37gmail.com</span>
-            </li>
-            <li class="mb-3">
-                <span class="font-semibold text-gray-700">Job Description: </span>
-                <span class="text-gray-600">Lead</span>
-            </li>
-            <li class="mb-3">
-                <span class="font-semibold text-gray-700">Profession: </span>
-                <span class="text-gray-600">Officer</span>
-            </li>
-            <li class="mb-3">
-                <span class="font-semibold text-gray-700">Card: </span>
-                <span class="text-gray-600">106</span>
-            </li>
-            <li class="mb-3">
-                <span class="font-semibold text-gray-700">Currency: </span>
-                <span class="text-gray-600">Kuwaiti Dinar</span>
-            </li>
-            <li class="mb-3">
-                <span class="font-semibold text-gray-700">Address: </span>
-                <span class="text-gray-600">Robinside</span>
-            </li>
-        </ul>
+<div class="container mx-auto py-10 px-6 max-w-3xl">
+    <div class="bg-white shadow-lg rounded-lg overflow-hidden">
+        <div class="px-6 py-4 bg-blue-500 text-white">
+            <h2 class="text-2xl font-semibold">User Details</h2>
+        </div>
+        <div class="px-6 py-4">
+            <ul class="divide-y divide-gray-200">
+                <li class="py-4 flex justify-between items-center">
+                    <span class="font-semibold text-gray-700">Name:</span>
+                    <span class="text-gray-600">{{ user?.name }}</span>
+                </li>
+                <li class="py-4 flex justify-between items-center">
+                    <span class="font-semibold text-gray-700">Surname:</span>
+                    <span class="text-gray-600">{{ user?.surname }}</span>
+                </li>
+                <li class="py-4 flex justify-between items-center">
+                    <span class="font-semibold text-gray-700">Gender:</span>
+                    <span class="text-gray-600">{{ user?.gender }}</span>
+                </li>
+                <li class="py-4 flex justify-between items-center">
+                    <span class="font-semibold text-gray-700">Email:</span>
+                    <span class="text-gray-600">{{ user?.email }}</span>
+                </li>
+                <li class="py-4 flex justify-between items-center">
+                    <span class="font-semibold text-gray-700">Job Description:</span>
+                    <span class="text-gray-600">{{ user?.jobDescription }}</span>
+                </li>
+                <li class="py-4 flex justify-between items-center">
+                    <span class="font-semibold text-gray-700">Profession:</span>
+                    <span class="text-gray-600">{{ user?.profession }}</span>
+                </li>
+                <li class="py-4 flex justify-between items-center">
+                    <span class="font-semibold text-gray-700">Card Number:</span>
+                    <span class="text-gray-600">{{ user?.card }}</span>
+                </li>
+                <li class="py-4 flex justify-between items-center">
+                    <span class="font-semibold text-gray-700">Currency:</span>
+                    <span class="text-gray-600">{{ user?.currency }}</span>
+                </li>
+                <li class="py-4 flex justify-between items-center">
+                    <span class="font-semibold text-gray-700">Address:</span>
+                    <span class="text-gray-600">{{ user?.adress }}</span>
+                </li>
+            </ul>
+            <div class="mt-6 text-center">
+                <a routerLink="./posts"
+                    class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600 transition duration-300">
+                    View User Posts
+                </a>
+            </div>
+        </div>
     </div>
-    <a routerLink="./posts">Userin postlarına bax</a>
 </div>

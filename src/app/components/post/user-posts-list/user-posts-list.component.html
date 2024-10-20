@@ -1,9 +1,15 @@
-<section class="flex flex-col items-end">
-    <button class="px-4 py-2 rounded-lg bg-green-800 text-white relative top-5 right-10" (click)="openUserModal()">Add
-        new
-        post</button>
-    <div class="container mx-auto px-4">
-        <h2 class="text-2xl font-bold mb-4">User Posts</h2>
+<section class="flex flex-col items-end max-w-[1340px] mx-auto my-8 gap-6">
+    <div class="flex flex-col gap-2 w-full">
+        <h2 class="text-2xl font-semibold text-[#4A85F6]">User Posts</h2>
+        <div class="flex justify-between items-center">
+            <input type="text" class="py-2 px-4 w-[45%] rounded-lg focus:outline-none" placeholder="Search post...">
+            <button
+                class="px-6 py-3 rounded-sm text-white text-lg font-semibold bg-[#4A85F6] hover:bg-[#3475ee] transition-all ease-linear "
+                (click)="openUserModal()">Add
+                post &nbsp; +</button>
+        </div>
+    </div>
+    <div class="container mx-auto">
         <div *ngIf="posts.length > 0">
             <div *ngFor="let post of posts" class="bg-white shadow-md rounded-lg p-6 mb-4 flex flex-col gap-5">
                 <div class="flex justify-between">
@@ -11,12 +17,12 @@
                     <div class="flex items-center gap-2">
                         <button (click)="openEditModal(post);$event.stopPropagation()"
                             class="px-4 py-2 text-white bg-blue-500 rounded-lg hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
-                            Edit Post
+                            <img src="../../../../assets/icons/edit-icon.svg" alt="edit-icon">
                         </button>
                         <button
                             class="px-4 py-2 text-white bg-red-500 rounded-lg hover:bg-red-600 focus:outline-none focus:ring-2 focus:ring-red-300 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-800"
                             (click)="deletePostById(post.id);$event.stopPropagation()">
-                            Delete Post
+                            <img src="../../../../assets/icons/delete-icon.svg" alt="delete-icon">
                         </button>
                     </div>
                 </div>
