@@ -1,27 +1,63 @@
-# AngularTailwindUserApp
+# UserPost Application
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.3.10.
+**UserPost** is a web application designed to easily manage users and their posts. The app allows administrators to perform CRUD operations (Create, Read, Update, Delete) on users and their posts, while providing a seamless user experience with modern UI and functionalities.
 
-## Development server
+## Features
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+-   **User Management**: Add, edit, delete, and view user details.
+-   **Post Management**: Manage posts related to users, with features for filtering and pagination.
+-   **Responsive UI**: The app is built with Tailwind CSS to ensure a responsive design across devices.
+-   **Notifications**: Toast notifications are integrated for success, error, and informational messages.
+-   **Pagination**: Efficient pagination for managing large datasets.
 
-## Code scaffolding
+## Technologies Used
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+-   **Angular 17**: The framework used for building the app's core functionalities.
+-   **Tailwind CSS**: For styling and making the application responsive.
+-   **RxJS**: For managing reactive programming and asynchronous events.
+-   **Toast**: For user notifications (success, error, etc.).
+-   **Pagination Controller**: For handling data pagination effectively.
 
-## Build
+## Getting Started
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+### Prerequisites
 
-## Running unit tests
+To run this project locally, ensure you have the following tools installed:
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+-   [Node.js](https://nodejs.org/) (v16 or later)
+-   [Angular CLI](https://angular.io/cli) (v17 or later)
 
-## Running end-to-end tests
+### Installation
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+1. Clone the repository:
+    ```
+    git clone https://github.com/your-repository/userpost-app.git
+    cd userpost-app
+    ```
+2. Install dependencies:
+    ```
+    npm install
+    ```
+3. Running the Application
+    ```
+    npm start
+    ```
+    This will serve the app at http://localhost:4200/ by default.But If you want to change port write
+    ```
+    ng serve --port 3000
+    ```
+4. Building the Application
 
-## Further help
+    ```
+    npm run build
+    ```
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+    This will create a dist/ folder containing the optimized build for deployment.
+
+5. Testing the Application
+    ```
+    npm test
+    ```
+6. Watching for Changes
+
+To build and watch for changes continuously in development mode:

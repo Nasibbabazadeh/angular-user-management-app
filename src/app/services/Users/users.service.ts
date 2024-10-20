@@ -15,6 +15,9 @@ export class UsersService {
     getAllUsers(): Observable<TUser[]> {
         return this._genericHttp.getMethod<TUser[]>(this._endpoint)
     }
+    getUserById(id: number): Observable<TUser> {
+        return this._genericHttp.getMethod<TUser>(`${this._endpoint}/${id}`)
+    }
     deleteUserById(id: number): Observable<boolean> {
         return this._genericHttp.deleteMethod(`${this._endpoint}/${id}`)
     }

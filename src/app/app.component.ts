@@ -6,7 +6,6 @@ import { RouterOutlet } from '@angular/router'
     standalone: true,
     imports: [RouterOutlet],
     template: `<router-outlet />`,
-    styleUrl: '../styles.css',
 })
 export class AppComponent {
     title = 'angular-tailwind-user-app'

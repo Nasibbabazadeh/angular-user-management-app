@@ -1,21 +1,18 @@
 <div class="absolute inset-0 z-10 bg-black bg-opacity-50 flex items-center justify-center">
     <div class="bg-white rounded-lg p-6 max-w-lg w-full">
         <h2 class="text-lg font-medium mb-4">{{ mode === 'add' ? 'Add New User' : 'Edit User' }}</h2>
-        <form [formGroup]="userForm" (ngSubmit)="onSubmit()">
-            <input type="text" formControlName="name" placeholder="Enter user name..."
+        <form [formGroup]="postForm" (ngSubmit)="onSubmit()">
+            <input type="text" formControlName="title" placeholder="Enter post title..."
                 class="mb-4 p-2 border border-gray-300 rounded-md w-full">
-            <input type="text" formControlName="surname" placeholder="Enter user surname..."
+            <input type="text" formControlName="description" placeholder="Enter post description.."
                 class="mb-4 p-2 border border-gray-300 rounded-md w-full">
-            <input type="text" formControlName="email" placeholder="Enter user email..."
+            <input type="text" formControlName="tag" placeholder="Enter post tag..."
                 class="mb-4 p-2 border border-gray-300 rounded-md w-full">
-            <input type="text" formControlName="profession" placeholder="Enter user profession..."
-                class="mb-4 p-2 border border-gray-300 rounded-md w-full">
-
             <div class="flex justify-end space-x-2">
                 <button type="button" class="px-4 py-2 bg-gray-500 text-white rounded-lg" (click)="onClose()">
                     Cancel
                 </button>
-                <button type="submit" class="px-4 py-2 bg-blue-600 text-white rounded-lg" [disabled]="userForm.invalid">
+                <button type="submit" class="px-4 py-2 bg-blue-600 text-white rounded-lg" [disabled]="postForm.invalid">
                     Add details
                 </button>
             </div>
