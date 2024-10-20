@@ -8,4 +8,5 @@ export type TUser = {
     card: string
     currency: string
     id: number
+    gender: string
 }
