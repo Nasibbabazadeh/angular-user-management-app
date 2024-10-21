@@ -40,7 +40,11 @@ To run this project locally, ensure you have the following tools installed:
     ```
 3. Running the Application
     ```
-    npm start
+    ng serve
+    ```
+    or run the application and open automatically
+    ```
+    ng serve --open
     ```
     This will serve the app at http://localhost:4200/ by default.But If you want to change port write
     ```
