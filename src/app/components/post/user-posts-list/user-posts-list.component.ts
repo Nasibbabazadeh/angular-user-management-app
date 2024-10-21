@@ -130,6 +130,7 @@ export class PostListComponent implements OnInit {
     }
 
     refreshPosts(): void {
+        this.getPostsCount()
         this._postService
             .getUserPosts(this.userId, this.currentPage, this.itemsPerPage)
             .subscribe((post: TPost[]) => {

@@ -1,4 +1,4 @@
-<div class="absolute inset-0 z-10 bg-black bg-opacity-50 flex items-center justify-center h-screen">
+<div class="fixed inset-0 z-10 bg-black bg-opacity-50 flex items-center justify-center h-screen">
     <div class="bg-white rounded-lg p-6 max-w-lg w-full">
         <h2 class="text-lg font-medium mb-4">{{ mode === 'add' ? 'Add New User' : 'Edit User' }}</h2>
         <form [formGroup]="postForm" (ngSubmit)="onSubmit()">

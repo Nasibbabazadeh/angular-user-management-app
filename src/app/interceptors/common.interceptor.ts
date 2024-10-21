@@ -5,7 +5,6 @@ import {
 } from '@angular/common/http'
 import { catchError, throwError } from 'rxjs'
 
-// Function-based interceptor using HttpInterceptorFn
 export const CommonInterceptor: HttpInterceptorFn = (
     req: HttpRequest<any>,
     next
