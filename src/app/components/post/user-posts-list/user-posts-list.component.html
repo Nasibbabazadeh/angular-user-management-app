@@ -45,8 +45,8 @@
                     (click)="onPageChange(currentPage - 1)" [disabled]="currentPage === 1">Previous</button>
                 <button
                     class="px-4 py-2 bg-blue-500 text-white rounded-md disabled:bg-opacity-40 disabled:cursor-not-allowed"
-                    (click)="onPageChange(currentPage + 1)"
-                    [disabled]="currentPage === postCount / itemsPerPage">Next</button>
+                    (click)="onPageChange(currentPage + 1)" [disabled]=(getEndLimitPagination())>Next
+                </button>
             </div>
         </div>
 

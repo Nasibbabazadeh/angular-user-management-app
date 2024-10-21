@@ -1,4 +1,4 @@
-@if(user){
+@if(!error && loading === false){
 <div class="container mx-auto py-10 px-6 max-w-3xl">
     <div class="bg-white shadow-lg rounded-lg overflow-hidden">
         <div class="px-6 py-4 bg-blue-500 text-white">
@@ -8,49 +8,52 @@
             <ul class="divide-y divide-gray-200">
                 <li class="py-4 flex justify-between items-center">
                     <span class="font-semibold text-gray-700">Name:</span>
-                    <span class="text-gray-600">{{ user.name }}</span>
+                    <span class="text-gray-600">{{ user?.name }}</span>
                 </li>
                 <li class="py-4 flex justify-between items-center">
                     <span class="font-semibold text-gray-700">Surname:</span>
-                    <span class="text-gray-600">{{ user.surname }}</span>
+                    <span class="text-gray-600">{{ user?.surname }}</span>
                 </li>
                 <li class="py-4 flex justify-between items-center">
                     <span class="font-semibold text-gray-700">Gender:</span>
-                    <span class="text-gray-600">{{ user.gender }}</span>
+                    <span class="text-gray-600">{{ user?.gender }}</span>
                 </li>
                 <li class="py-4 flex justify-between items-center">
                     <span class="font-semibold text-gray-700">Email:</span>
-                    <span class="text-gray-600">{{ user.email }}</span>
+                    <span class="text-gray-600">{{ user?.email }}</span>
                 </li>
                 <li class="py-4 flex justify-between items-center">
                     <span class="font-semibold text-gray-700">Job Description:</span>
-                    <span class="text-gray-600">{{ user.jobDescription }}</span>
+                    <span class="text-gray-600">{{ user?.jobDescription }}</span>
                 </li>
                 <li class="py-4 flex justify-between items-center">
                     <span class="font-semibold text-gray-700">Profession:</span>
-                    <span class="text-gray-600">{{ user.profession }}</span>
+                    <span class="text-gray-600">{{ user?.profession }}</span>
                 </li>
                 <li class="py-4 flex justify-between items-center">
                     <span class="font-semibold text-gray-700">Card Number:</span>
-                    <span class="text-gray-600">{{ user.card }}</span>
+                    <span class="text-gray-600">{{ user?.card }}</span>
                 </li>
                 <li class="py-4 flex justify-between items-center">
                     <span class="font-semibold text-gray-700">Currency:</span>
-                    <span class="text-gray-600">{{ user.currency }}</span>
+                    <span class="text-gray-600">{{ user?.currency }}</span>
                 </li>
                 <li class="py-4 flex justify-between items-center">
                     <span class="font-semibold text-gray-700">Address:</span>
-                    <span class="text-gray-600">{{ user.adress }}</span>
+                    <span class="text-gray-600">{{ user?.adress }}</span>
                 </li>
             </ul>
-            <div class="mt-6 text-center">
-                <a routerLink="./posts"
-                    class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600 transition duration-300">
-                    View User Posts
-                </a>
-            </div>
+            <a routerLink="./posts"
+                class="bg-blue-500 text-white w-full font-medium leading-8 flex justify-center mt-5 items-center  py-2 rounded hover:bg-blue-600 transition duration-300">
+                View User Posts
+            </a>
         </div>
     </div>
+</div>
+}
+@else if(loading){
+<div class="h-screen w-screen flex justify-center items-center">
+    <app-spinner />
 </div>
 }
 @else {

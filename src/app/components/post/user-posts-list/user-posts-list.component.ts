@@ -11,7 +11,6 @@ import { CapitalizePipe } from '../../../shared/pipes/capitalize.pipe'
 import { Spinner } from '../../spinner/spinner.component'
 import { UserFilterComponent } from '../../user/user-filter/user-filter.component'
 import { UserModalComponent } from '../post-modal/post-modal.component'
-import { CommonInterceptor } from '../../../interceptors/common.interceptor'
 
 @Component({
     selector: 'user-posts-list',
@@ -74,6 +73,7 @@ export class PostListComponent implements OnInit {
                 },
                 error: (error) => {
                     this.loading = false
+                    console.error('Error fetching posts:', error)
                 },
             })
     }
@@ -141,5 +141,10 @@ export class PostListComponent implements OnInit {
         this.modalMode = 'edit'
         this.selectedPost = user
         this.isModalOpen = true
+    }
+    getEndLimitPagination() {
+        return (
+            this.currentPage === Math.ceil(this.postCount / this.itemsPerPage)
+        )
     }
 }
