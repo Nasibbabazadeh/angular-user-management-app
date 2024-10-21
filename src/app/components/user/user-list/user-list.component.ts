@@ -9,6 +9,7 @@ import { ErrorService } from '../../../services/Error/error.service'
 import { UsersService } from '../../../services/Users/users.service'
 import { UserModalComponent } from '../user-modal/user-modal.component'
 import { RouterLink } from '@angular/router'
+import { Spinner } from '../../spinner/spinner.component'
 @Component({
     selector: 'app-user-list',
     standalone: true,
@@ -19,13 +20,14 @@ import { RouterLink } from '@angular/router'
         CommonModule,
         UserModalComponent,
         RouterLink,
+        Spinner,
     ],
     templateUrl: './user-list.component.html',
 })
 export class UserListComponent implements OnInit {
     addForm: FormGroup = new FormGroup({})
     users: TUser[] = []
-    loading = false
+    loading = true
     currentPage: number = 1
     itemsPerPage: number = 10
     isModalOpen: boolean = false
@@ -44,7 +46,7 @@ export class UserListComponent implements OnInit {
     loadUsers(): void {
         this._userService.getAllUsers().subscribe({
             next: (users: TUser[]) => {
-                this.loading = true
+                this.loading = false
                 this.users = users
             },
             error: (error: HttpErrorResponse) => {
