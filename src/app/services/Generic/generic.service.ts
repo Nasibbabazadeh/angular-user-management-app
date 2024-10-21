@@ -47,4 +47,14 @@ export class GenericHttpService {
                 )
             )
     }
+    filterElementByName<T>(name: string, endpoint: string): Observable<T> {
+        const url = `${this.baseUrl}/${endpoint}/name=${name}`
+        return this._http
+            .get<T>(url)
+            .pipe(
+                catchError((error: HttpErrorResponse) =>
+                    this.error.handleError(error)
+                )
+            )
+    }
 }

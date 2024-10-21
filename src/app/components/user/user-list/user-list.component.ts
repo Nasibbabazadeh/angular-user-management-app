@@ -10,6 +10,7 @@ import { UsersService } from '../../../services/Users/users.service'
 import { UserModalComponent } from '../user-modal/user-modal.component'
 import { RouterLink } from '@angular/router'
 import { Spinner } from '../../spinner/spinner.component'
+import { UserFilterComponent } from '../user-filter/user-filter.component'
 @Component({
     selector: 'app-user-list',
     standalone: true,
@@ -21,6 +22,7 @@ import { Spinner } from '../../spinner/spinner.component'
         UserModalComponent,
         RouterLink,
         Spinner,
+        UserFilterComponent,
     ],
     templateUrl: './user-list.component.html',
 })
@@ -33,6 +35,9 @@ export class UserListComponent implements OnInit {
     isModalOpen: boolean = false
     modalMode: 'add' | 'edit' = 'add'
     selectedUser: TUser | null = null
+    filterValue: string = ''
+    filteredUsers: TUser[] = []
+    userPlaceholder: string = 'Search by username...'
     constructor(
         private _userService: UsersService,
         private _err: ErrorService,
@@ -41,6 +46,12 @@ export class UserListComponent implements OnInit {
 
     ngOnInit(): void {
         this.loadUsers()
+    }
+    onFilterValueChanged(newValue: string) {
+        this.filterValue = newValue.toLowerCase()
+        this.filteredUsers = this.users.filter((user) =>
+            user.name.toLowerCase().includes(this.filterValue)
+        )
     }
 
     loadUsers(): void {

@@ -8,16 +8,18 @@ import { HttpErrorResponse } from '@angular/common/http'
 import { ErrorService } from '../../../services/Error/error.service'
 import { ToastrService } from 'ngx-toastr'
 import { ActivatedRoute } from '@angular/router'
+import { Spinner } from '../../spinner/spinner.component'
+import { UserFilterComponent } from '../../user/user-filter/user-filter.component'
 
 @Component({
     selector: 'user-posts-list',
     standalone: true,
     templateUrl: './user-posts-list.component.html',
-    imports: [CommonModule, UserModalComponent],
+    imports: [CommonModule, UserModalComponent, Spinner, UserFilterComponent],
 })
 export class PostListComponent implements OnInit {
     addForm: FormGroup = new FormGroup({})
-    loading = false
+    loading = true
     isModalOpen: boolean = false
     modalMode: 'add' | 'edit' = 'add'
     selectedPost: TPost | null = null
@@ -25,7 +27,9 @@ export class PostListComponent implements OnInit {
     userId: string = ''
     currentPage: number = 1
     itemsPerPage: number = 2
-
+    filteredPost: any[] = []
+    filterValue: string = ''
+    postPlaceholder: string = 'Search by post title...'
     constructor(
         private _postService: PostService,
         private _err: ErrorService,
@@ -39,15 +43,22 @@ export class PostListComponent implements OnInit {
             this.loadUserPosts()
         })
     }
-
+    onFilterValueChanged(newValue: string) {
+        this.filterValue = newValue.toLowerCase()
+        this.filteredPost = this.posts.filter((post) =>
+            post.title.toLowerCase().includes(this.filterValue)
+        )
+    }
     loadUserPosts(): void {
         this._postService
             .getUserPosts(this.userId, this.currentPage, this.itemsPerPage)
             .subscribe({
                 next: (posts: TPost[]) => {
+                    this.loading = false
                     this.posts = posts
                 },
                 error: (error) => {
+                    this.loading = false
                     console.error('Error fetching posts:', error)
                 },
             })

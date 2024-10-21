@@ -30,4 +30,10 @@ export class UsersService {
             userModel
         )
     }
+    filterUsersByName(userName: string): Observable<TUser> {
+        return this._genericHttp.filterElementByName<TUser>(
+            userName,
+            this._endpoint
+        )
+    }
 }

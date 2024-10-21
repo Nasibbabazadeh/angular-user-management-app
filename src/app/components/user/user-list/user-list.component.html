@@ -2,7 +2,8 @@
     <div class="flex flex-col w-full gap-5">
         <h2 class="text-2xl text-[#4A85F6] font-semibold">Users Dashboard</h2>
         <div class="flex justify-between">
-            <input type="text" class="py-2 px-4 w-[45%] rounded-lg focus:outline-none" placeholder="Search user...">
+            <app-user-filter [filterValue]="filterValue" class="w-[45%]" [placeholder]="userPlaceholder"
+                (filterChange)="onFilterValueChanged($event)"></app-user-filter>
             <button
                 class="px-6 py-3 rounded-sm text-white text-lg font-semibold bg-[#4A85F6] hover:bg-[#3475ee] transition-all ease-linear"
                 (click)="openUserModal()">Add user &nbsp; +</button>
@@ -37,7 +38,10 @@
                 </tr>
             </thead>
             <tbody>
-                @for (user of users | paginate : {itemsPerPage: 5, currentPage: currentPage}; track user.id) {
+                @for (user of (filterValue ? filteredUsers : users) | paginate : {itemsPerPage: 5,
+                currentPage:
+                currentPage}; track
+                user.id) {
                 <tr class="bg-white hover:bg-gray-100 transition-all cursor-pointer border-b-[1px] border-b-gray-600 border-opacity-25 text-[#222B45] text-[17px] leading-7 font-medium"
                     routerLink="{{user.id}}">
                     <th scope="row" class="px-6 py-4 font-medium  whitespace-nowrap">
