@@ -1,21 +1,28 @@
-import { Component, OnInit } from '@angular/core'
-import { PostService } from '../../../services/Posts/post.service'
-import { TPost } from '../../../models/post.model'
 import { CommonModule } from '@angular/common'
-import { UserModalComponent } from '../post-modal/post-modal.component'
-import { FormGroup } from '@angular/forms'
 import { HttpErrorResponse } from '@angular/common/http'
-import { ErrorService } from '../../../services/Error/error.service'
-import { ToastrService } from 'ngx-toastr'
+import { Component, OnInit } from '@angular/core'
+import { FormGroup } from '@angular/forms'
 import { ActivatedRoute } from '@angular/router'
+import { ToastrService } from 'ngx-toastr'
+import { TPost } from '../../../models/post.model'
+import { ErrorService } from '../../../services/Error/error.service'
+import { PostService } from '../../../services/Posts/post.service'
+import { CapitalizePipe } from '../../../shared/pipes/capitalize.pipe'
 import { Spinner } from '../../spinner/spinner.component'
 import { UserFilterComponent } from '../../user/user-filter/user-filter.component'
+import { UserModalComponent } from '../post-modal/post-modal.component'
 
 @Component({
     selector: 'user-posts-list',
     standalone: true,
     templateUrl: './user-posts-list.component.html',
-    imports: [CommonModule, UserModalComponent, Spinner, UserFilterComponent],
+    imports: [
+        CommonModule,
+        UserModalComponent,
+        Spinner,
+        UserFilterComponent,
+        CapitalizePipe,
+    ],
 })
 export class PostListComponent implements OnInit {
     addForm: FormGroup = new FormGroup({})

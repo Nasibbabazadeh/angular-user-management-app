@@ -15,7 +15,7 @@
             <div *ngFor="let post of (filterValue ? filteredPost : posts)"
                 class="bg-white shadow-md rounded-lg p-6 mb-4 flex flex-col gap-5">
                 <div class="flex justify-between">
-                    <h3 class="text-xl font-bold mb-2">Title : {{ post.title }}</h3>
+                    <h3 class="text-xl font-bold mb-2">Title : {{ post.title | capitalize }}</h3>
                     <div class="flex items-center gap-2">
                         <button (click)="openEditModal(post);$event.stopPropagation()"
                             class="px-4 py-2 text-white bg-blue-500 rounded-lg hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
