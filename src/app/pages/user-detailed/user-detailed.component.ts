@@ -32,7 +32,6 @@ export class UserDetailedComponent implements OnInit {
             this._userService.getUserById(this.userId).subscribe({
                 next: (user: TUser) => {
                     this.user = user
-                    console.log(user)
                 },
                 error: (error) => {
                     this._error.handleError(error)

@@ -27,11 +27,15 @@ export class PostService {
 
         return this._http.get<TPost[]>(url, { params })
     }
-
     addPost(userId: string, post: TPost): Observable<TPost> {
         return this._genericHttp.postMethod(
             `${this._endpoint}/${userId}/posts`,
             post
+        )
+    }
+    getAllPosts(userId: string): Observable<TPost[]> {
+        return this._http.get<TPost[]>(
+            `${this._genericHttp.baseUrl}/${this._endpoint}/${userId}/posts`
         )
     }
 

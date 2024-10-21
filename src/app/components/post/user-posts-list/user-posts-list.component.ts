@@ -36,6 +36,7 @@ export class PostListComponent implements OnInit {
     itemsPerPage: number = 2
     filteredPost: any[] = []
     filterValue: string = ''
+    postCount: number = 0
     postPlaceholder: string = 'Search by post title...'
     constructor(
         private _postService: PostService,
@@ -48,7 +49,13 @@ export class PostListComponent implements OnInit {
         this._activeRoute.params.subscribe((params) => {
             this.userId = params['id']
             this.loadUserPosts()
+            this.getPostsCount()
         })
+    }
+    getPostsCount(): void {
+        this._postService
+            .getAllPosts(this.userId)
+            .subscribe((posts) => (this.postCount = posts.length))
     }
     onFilterValueChanged(newValue: string) {
         this.filterValue = newValue.toLowerCase()
