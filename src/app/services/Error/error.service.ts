@@ -12,10 +12,10 @@ export class ErrorService {
     handleError(error: HttpErrorResponse) {
         let errorMessage = ''
         if (error.error instanceof ErrorEvent) {
-            errorMessage = `Client-side error: ${error.error.message}`
+            errorMessage = `Client-side error   status${error.status} ${error.error.message}`
             this._toastr.error(errorMessage)
         } else {
-            errorMessage = `Server-side error: ${error.status} - ${error.message}`
+            errorMessage = `Server-side error  status: ${error.status} ${error.error.message}`
             this._toastr.error(errorMessage)
         }
         console.error(errorMessage)

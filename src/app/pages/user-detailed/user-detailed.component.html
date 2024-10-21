@@ -1,3 +1,4 @@
+@if(user){
 <div class="container mx-auto py-10 px-6 max-w-3xl">
     <div class="bg-white shadow-lg rounded-lg overflow-hidden">
         <div class="px-6 py-4 bg-blue-500 text-white">
@@ -7,39 +8,39 @@
             <ul class="divide-y divide-gray-200">
                 <li class="py-4 flex justify-between items-center">
                     <span class="font-semibold text-gray-700">Name:</span>
-                    <span class="text-gray-600">{{ user?.name }}</span>
+                    <span class="text-gray-600">{{ user.name }}</span>
                 </li>
                 <li class="py-4 flex justify-between items-center">
                     <span class="font-semibold text-gray-700">Surname:</span>
-                    <span class="text-gray-600">{{ user?.surname }}</span>
+                    <span class="text-gray-600">{{ user.surname }}</span>
                 </li>
                 <li class="py-4 flex justify-between items-center">
                     <span class="font-semibold text-gray-700">Gender:</span>
-                    <span class="text-gray-600">{{ user?.gender }}</span>
+                    <span class="text-gray-600">{{ user.gender }}</span>
                 </li>
                 <li class="py-4 flex justify-between items-center">
                     <span class="font-semibold text-gray-700">Email:</span>
-                    <span class="text-gray-600">{{ user?.email }}</span>
+                    <span class="text-gray-600">{{ user.email }}</span>
                 </li>
                 <li class="py-4 flex justify-between items-center">
                     <span class="font-semibold text-gray-700">Job Description:</span>
-                    <span class="text-gray-600">{{ user?.jobDescription }}</span>
+                    <span class="text-gray-600">{{ user.jobDescription }}</span>
                 </li>
                 <li class="py-4 flex justify-between items-center">
                     <span class="font-semibold text-gray-700">Profession:</span>
-                    <span class="text-gray-600">{{ user?.profession }}</span>
+                    <span class="text-gray-600">{{ user.profession }}</span>
                 </li>
                 <li class="py-4 flex justify-between items-center">
                     <span class="font-semibold text-gray-700">Card Number:</span>
-                    <span class="text-gray-600">{{ user?.card }}</span>
+                    <span class="text-gray-600">{{ user.card }}</span>
                 </li>
                 <li class="py-4 flex justify-between items-center">
                     <span class="font-semibold text-gray-700">Currency:</span>
-                    <span class="text-gray-600">{{ user?.currency }}</span>
+                    <span class="text-gray-600">{{ user.currency }}</span>
                 </li>
                 <li class="py-4 flex justify-between items-center">
                     <span class="font-semibold text-gray-700">Address:</span>
-                    <span class="text-gray-600">{{ user?.adress }}</span>
+                    <span class="text-gray-600">{{ user.adress }}</span>
                 </li>
             </ul>
             <div class="mt-6 text-center">
@@ -51,3 +52,16 @@
         </div>
     </div>
 </div>
+}
+@else {
+<div class="h-screen flex justify-center items-center">
+    <div class="flex flex-col items-center gap-4">
+        <h3 class="text-4xl font-semibold">404 Not Found &#9995;</h3>
+        <p class=" text-gray-600 text-lg">The requested post does not exist.</p>
+        <a routerLink="/users"
+            class="text-lg font-bold text-blue-500 transition-all ease-linear hover:text-blue-600 px-4 py-2 border-[1px] rounded-md">Go
+            to
+            User Page</a>
+    </div>
+</div>
+}
