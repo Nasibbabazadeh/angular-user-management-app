@@ -17,61 +17,62 @@
     }
     @else {
     <div class="w-full flex flex-col items-end gap-4">
-        <table class="w-full text-sm text-left text-gray-700 rounded-sm">
-            <thead class="text-gray-600 uppercase bg-[#EFF4FA]">
-                <tr class="font-medium text-[#8F9BB3]">
-                    <th scope="col" class="px-6 py-6">
-                        Name
-                    </th>
-                    <th scope="col" class="px-6 py-6">
-                        Surname
-                    </th>
-                    <th scope="col" class="px-6 py-6">
-                        Email Address
-                    </th>
-                    <th scope="col" class="px-6 py-6">
-                        Profession
-                    </th>
-                    <th scope="col" class="px-6 py-6 text-center">
-                        Actions
-                    </th>
-                </tr>
-            </thead>
-            <tbody>
-                @for (user of (filterValue ? filteredUsers : users) | paginate : {itemsPerPage: 5,
-                currentPage:
-                currentPage}; track
-                user.id) {
-                <tr class="bg-white hover:bg-gray-100 transition-all cursor-pointer border-b-[1px] border-b-gray-600 border-opacity-25 text-[#222B45] text-[17px] leading-7 font-medium"
-                    routerLink="{{user.id}}">
-                    <th scope="row" class="px-6 py-4 font-medium  whitespace-nowrap">
-                        {{user.name}}
-                    </th>
-                    <td class="px-6 py-4">
-                        {{user.surname}}
-                    </td>
-                    <td class="px-6 py-4">
-                        {{user.email}}
-                    </td>
-                    <td class="px-6 py-4">
-                        {{user.profession}}
-                    </td>
-                    <td class="px-6 py-4 flex justify-center gap-2">
-                        <button (click)="deleteUserById(user.id); $event.stopPropagation()"
-                            class="px-4 py-2 text-white bg-red-500 rounded-lg hover:bg-red-600 focus:outline-none focus:ring-2 focus:ring-red-300">
-                            <img src="../../../../assets/icons/delete-icon.svg" alt="delete-icon">
-                        </button>
+        <div class="w-full overflow-x-auto">
+            <table class="w-full text-sm text-left text-gray-700 rounded-sm table-auto">
+                <thead class="text-gray-600 uppercase bg-[#EFF4FA]">
+                    <tr class="font-medium text-[#8F9BB3]">
+                        <th scope="col" class="px-6 py-6">
+                            Name
+                        </th>
+                        <th scope="col" class="px-6 py-6">
+                            Surname
+                        </th>
+                        <th scope="col" class="px-6 py-6">
+                            Email Address
+                        </th>
+                        <th scope="col" class="px-6 py-6">
+                            Profession
+                        </th>
+                        <th scope="col" class="px-6 py-6 text-center">
+                            Actions
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @for (user of (filterValue ? filteredUsers : users) | paginate : {itemsPerPage: 5, currentPage:
+                    currentPage}; track user.id) {
+                    <tr class="bg-white hover:bg-gray-100 transition-all cursor-pointer border-b-[1px] border-b-gray-600 border-opacity-25 text-[#222B45] text-[17px] leading-7 font-medium"
+                        routerLink="{{user.id}}">
+                        <th scope="row" class="px-6 py-4 font-medium whitespace-nowrap">
+                            {{user.name}}
+                        </th>
+                        <td class="px-6 py-4">
+                            {{user.surname}}
+                        </td>
+                        <td class="px-6 py-4">
+                            {{user.email}}
+                        </td>
+                        <td class="px-6 py-4">
+                            {{user.profession}}
+                        </td>
+                        <td class="px-6 py-4 flex justify-center gap-2">
+                            <button (click)="deleteUserById(user.id); $event.stopPropagation()"
+                                class="flex justify-center items-center text-white bg-red-500 rounded-lg hover:bg-red-600 focus:outline-none focus:ring-2 focus:ring-red-300 w-14 h-10">
+                                <img src="../../../../assets/icons/delete-icon.svg" alt="delete-icon">
+                            </button>
 
-                        <button (click)="openEditModal(user);$event.stopPropagation()"
-                            class="px-4 py-2 text-white bg-blue-500 rounded-lg hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-300">
-                            <img src="../../../../assets/icons/edit-icon.svg" alt="edit-icon">
-                        </button>
-                    </td>
-                </tr>
-                }
-            </tbody>
-        </table>
+                            <button (click)="openEditModal(user);$event.stopPropagation()"
+                                class="flex justify-center items-center text-white bg-blue-500 rounded-lg hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-300 w-14 h-10">
+                                <img src="../../../../assets/icons/edit-icon.svg" alt="edit-icon">
+                            </button>
+                        </td>
+                    </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
     </div>
+
     }
 
     <pagination-controls (pageChange)="handlePageChange($event)">
